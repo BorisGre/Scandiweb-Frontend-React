@@ -1,0 +1,133 @@
+@import './components/typesSelector/typesSelector.css';
+@import './components/footer/footer.css';
+@import './components/product/product.css';
+@import './components/dvd/dvdComponent.css';
+@import './components/book/book.css';
+@import './components/furniture/furniture.css';
+@import './views/ProductsPage/Products.css';
+@import './views/ProductAdd/ProductAdd.css';
+
+#root {
+    outline: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    height: 100%;
+}
+
+.rootApp {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2.5% 5%;
+    height: 100%;
+}
+
+.wrap {
+    min-height: 550px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.top {
+    height: 55px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+} 
+
+.top h3{
+    display: inline-block;
+    flex-grow: 3;
+    flex-shrink: 1;
+}
+
+.topControls {
+    display: flex;
+    flex-wrap: nowrap;
+    /*flex-basis: 75%;*/
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 2;
+    margin-right: 3%;
+}
+
+.products .topControls {
+    margin-right: 0%;
+}
+
+.topControls button{
+    box-shadow: 2px 2px 2px 1px black;
+    border: 2px solid black;
+}
+
+.topControls a,button{
+    height: 25px;
+}
+
+.topControls button:hover {
+    background-color: aquamarine;    
+}
+
+.topControls button:focus  {
+    background-color: initial;
+}
+
+.warning {
+    color: red;
+}
+/*.topControls button:first-of-type {
+    width: 30%;
+    height: 20%;
+    margin-right: 5%;
+}
+
+.topControls button:not(:first-of-type) {
+    width: 65%;
+    height: 20%;
+}*/
+.test{
+    background-color: red;
+    height: 50px;
+}
+
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */ 
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    width: 150px; /* Ширина подсказки */
+    right: 1.5em; top: 0; /* Положение подсказки */
+    background: #1f1f1f;/*#3989c9;*/ /* Синий цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 0.5em; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 0.5s; /* Время появления подсказки */
+} 
+[data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    top: 0em; /* Положение подсказки */
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,19 @@
+.productsList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 3%;
+    width: 100%;
+}
+
+button[name="add"]{
+    width: 60px;
+    height: 25px;
+}
+
+button[name="delete"]{
+    width: 135px;
+    height: 25px;
+    margin: 5%;
+}

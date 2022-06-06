@@ -1,0 +1,8 @@
+.typesSelector {
+    opacity: 1;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    height: 5%;
+    border: 1px solid black;
+}

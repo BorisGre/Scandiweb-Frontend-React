@@ -1,0 +1,55 @@
+[name="noteNameEditable"] {
+    width: 25%;
+    height: 95%;
+}
+[name="noteNameEditable"] input[name="noteName"]{
+
+    border: 1px solid;
+    background: white;
+    cursor: text;
+    height: 93%;
+    width: 98%;
+    border-radius: 3px;
+    margin-top: 0.2%;
+    display: block;
+}
+
+[name="noteCategoryEditable"] {
+    width: 15%;
+}
+[name="noteContentEditable"] {
+    width: 45%;
+    height: 95%;
+}
+
+[name="noteContentEditable"] input[name="noteContent"]{
+
+    border: 1px solid;
+    background: white;
+    cursor: text;
+    height: 92%;
+    width: 98%;
+    border-radius: 3px;
+    margin-top: 0.2%;
+    display: block;
+    margin-left: 0.7%;
+}
+
+[name="noteControlsEditable"] {
+    width: 7%;
+}
+
+[name="noteControlsEditable"] .controlButtonsWrap li{
+    display: inline-block;
+    width: 35%;
+    padding-right: 5%;
+}
+
+[name="noteIcon"] {
+    width: 8%;
+    text-align: center;
+}
+
+[name="noteIcon"] i{
+    padding-top: 5px;
+}

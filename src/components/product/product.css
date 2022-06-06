@@ -1,0 +1,33 @@
+.product{
+    display: block;
+    border: 2px solid black;
+    flex-basis: 200px; /*2%;*/
+    /*width: 200px;*/
+    margin: 1.5%;
+    padding: 0.5%;
+    height: 170px;
+}
+
+.product label.productCheckbox {
+    display: block;
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    margin: 0px;
+    padding: 0px;
+    opacity: 1;
+}
+
+input[type="checkbox"].delete-checkbox{
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+}
+.productCard{
+    margin-top: 10%;
+}
+.productCard li{
+    width: 100%;
+    text-align: center;
+}

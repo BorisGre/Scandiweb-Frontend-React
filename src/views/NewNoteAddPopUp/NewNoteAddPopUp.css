@@ -1,0 +1,107 @@
+.sectionPopUp {
+    position: fixed;
+    width: 0%;
+    height: 0%;
+    background-color: gray;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.showPopUpSection {
+    width: 100%;
+    height: 100%;
+}
+
+.popupHidden {
+    display: none;
+}
+
+.noteAddPopUp {
+	position: absolute;
+    background-color: white;
+	width: 90%;
+	height: 55%;
+	top: 20%;
+	left: 5%;
+}
+
+.sectionPopUp .closeButton {
+    width: 2.5em;
+    border-radius: 2.5em;
+    height: 2.5em;
+    font-size: 1.1em;
+    /* line-height: 0px; */
+    /* line-break: anywhere; */
+    position: relative;
+    left: 98%;
+    top: -5%;
+}
+
+.popUpControls {
+    width: 30%;
+    margin-left: 35%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5%;
+}
+
+.popUpControls button{
+    width: 25%;
+    border-radius: 3px;
+    border: solid 1px black;
+}
+.popUpControls button:hover{
+    background-color: black;
+    color: white;
+    border: solid 1px grey;
+}
+
+form {
+    height: 75%;
+    padding: 1%;
+}
+fieldset {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60%;
+}
+
+fieldset * {
+    display: inline-flex;
+}
+
+fieldset input[type=text], select, textarea {
+    outline: 1px solid black;
+}
+
+fieldset textarea {
+    padding: 0px;
+    margin: 0px;
+    height: 1.6em;
+}
+
+.noteAddPopUp form span[id="popUpAddIcon"]{
+    width: 3%;
+}
+
+.noteAddPopUp form input[id="newNoteName"]{
+    width: 25%;
+    border: none;
+    outline: 1px dashed;
+    padding: 0px;
+    margin: 0px;
+}
+
+.noteAddPopUp form select[id="newNoteCategory"]{
+    width: 20%;
+}
+
+.noteAddPopUp form textarea[id="newNoteContent"]{
+    border: none;
+    width: 35%;
+    outline: 1px dashed;
+    height: 30%;
+}

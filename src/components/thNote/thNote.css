@@ -1,0 +1,29 @@
+[name="notesTHeadName"]{
+    margin-left:8%;
+    width:15%;
+}
+[name="notesTHeadCreated"]{
+    width: 15%;
+}
+[name="notesTHeadCategory"] {
+    width: 15%;
+}
+[name="notesTHeadContent"] {
+    width: 23%;
+}
+[name="notesTHeadDates"] {
+    width: 17%;
+}
+[name="notesTHeadControls"] {
+    width: 7%;
+}
+
+[name="headerNoteControls"] {
+    display: flex;
+}
+[name="headerNoteControls"] [name="archiveToggle"]{
+    /* flex-basis: 48%;
+    margin-left: 11%; */
+    flex-basis: 35%;
+    margin-left: 32%;
+}
