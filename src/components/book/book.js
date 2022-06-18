@@ -7,11 +7,11 @@ const BookComponent = ({newProduct = {}, handleChange, notification}) => {
         <ul id="Book">
           <li>
            <ul className='fieldNotificationBlock'>
-            <li> 
-              <label htmlFor="weight">Weight (KG) </label>
+            <li className='inputSide'> 
+              <label htmlFor="weight">Weight (KG)</label>
               <input id="weight" type="text" max-length="50" placeholder='Please, provide weight' value={newProduct?.weight?.value} onChange={(e) => handleChange(e, 'weight')}/>
             </li>
-             <li><span className='warning'>{notification('weight', newProduct)}</span></li>
+             <li className='notificationSide'><span className='warning'>{notification('weight', newProduct)}</span></li>
             </ul>
           </li>
           <li><TypeDescriptionComponent productType={newProduct.productType?.value}/></li>

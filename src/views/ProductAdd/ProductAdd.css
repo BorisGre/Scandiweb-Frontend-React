@@ -1,13 +1,12 @@
 button[name="save"]{
     width: 65px;
     height: 25px;
-    margin-right: 3%;
+    margin-right: 15%;
 }
 
 button[name="cancel"]{
     width: 65px;
     height: 25px;
-    margin-left: 15%;
 }
 
 #product_form {
@@ -23,9 +22,6 @@ button[name="cancel"]{
     height: 5%;
 }
 
-#product_form li:not(:first-of-type){
-    margin-top: 1%;
-}
 
 #product_form label{
     display: inline-block;
@@ -33,9 +29,27 @@ button[name="cancel"]{
     font-size: 16px;
 }
 
-#product_form label[name="switcherLabel"]{
+#product_form .typesSelectorWrapper{
+    width: 35%;
+    display: flex;
+    /*flex-wrap: wrap; */
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 320px;
+    margin-top: 10px;
+}
+
+#product_form .typesSelectorWrapper label[name="switcherLabel"]{
     display: inline-block;
-    width: 15%;
+    width: 20%;
+    min-width: 115px;
+}
+
+
+#product_form .typesSelectorWrapper .typesSelector{
+   
+    max-width: 200px;
+    min-width: 150px;
 }
 
 #product_form input[type="text"]{
@@ -51,21 +65,33 @@ button[name="cancel"]{
 /**/
 #product_form .mainFieldNotificationBlock{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
-    height: 50px;
-    align-items: baseline;
+    align-items: flex-start;
+    margin-bottom: 2%;
+    height: 60px;
 }
-#product_form .mainFieldNotificationBlock li {
-    width: 100%;
+
+#product_form .mainFieldNotificationBlock li.notificationSide {
+    display: flex;
+    max-height: 60px;
+    height: 100%;
+    align-items: center;
+}
+
+#product_form .mainFieldNotificationBlock li.inputSide {
+    /*width: 100%;*/
+ 
 }
 
 #product_form .mainFieldNotificationBlock label{
-    width: 25%;
+    /*width: 25%;*/
+    width: 95px;
 }
 
 #product_form .mainFieldNotificationBlock input{
-    width: 70%;
+    /*max-width: 260px;*/
+    width: 50%;
     height: 25px;
 }
 
@@ -75,18 +101,153 @@ button[name="cancel"]{
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    height: 50px;
+    height: 60px;
     align-items: baseline;
 }
 #product_form .fieldNotificationBlock li {
-    width: 100%;
+    /*width: 100%;*/
 }
 
 #product_form .fieldNotificationBlock label{
     width: 25%;
+    /*max-width: 95px;*/
+    min-width: 95px;
 }
 
 #product_form .fieldNotificationBlock input{
-    width: 70%;
+    /*width: 50%;*/
+    min-width: 260px;
     height: 25px;
+}
+
+#product_form li.inputSide, #product_form li.notificationSide{
+    width: 50%;
+}
+
+.top{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 2.5%;
+}
+
+@media(width < 880px){
+
+}
+
+@media (width >= 680px) { 
+
+    #product_form .mainFieldNotificationBlock input {
+        
+        width: 90%;
+        max-width: 270px;
+    }
+
+    #product_form .fieldNotificationBlock label {
+        max-width: 95px;
+    }  
+    
+    #product_form .fieldNotificationBlock input {
+        
+        width: 90%;
+        max-width: 270px;
+    }
+}
+
+
+
+@media(width < 685px){
+
+    .top {
+        height: auto;
+        margin-bottom: 0%;
+    }
+
+    .topControls{
+        width: auto;
+        /*padding: 0% 5%;*/
+        justify-content: space-between;
+        /*margin: 5% 0%;*/
+    }
+
+    .topControls button[name="save"] {
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    #product_form .mainFieldNotificationBlock{
+        height: auto;
+    }
+
+    #product_form .mainFieldNotificationBlock li{
+        width: 100%;
+    }
+
+    #product_form .mainFieldNotificationBlock label{
+        width: 30%;
+        min-width: 70px;
+    }
+
+    #product_form .mainFieldNotificationBlock input{
+        width: 100%;
+        min-width: 200px;
+    }
+
+    /*Add product Types Selector*/
+    #product_form .typesSelectorWrapper{
+        padding-top: 5%;
+    }
+
+    #product_form label[name="switcherLabel"]{
+        width: 40%;
+        min-width: 115px;
+    }
+
+    #product_form .typesSelector{
+        min-width: 150px;
+        /*width: 100%;*/
+         /*margin: 0% 50%;*/
+    }
+
+    #product_form li.typeSpecificFields{
+        margin-top: 10%;
+    }
+
+    /*Add product additional fields by selected type*/
+    #product_form .fieldNotificationBlock{
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    #product_form .fieldNotificationBlock li{
+        width: 100%;
+    }
+
+    #product_form .fieldNotificationBlock label{
+        width: 30%;
+    }
+
+    #product_form .fieldNotificationBlock input{
+        width: 100%;
+        min-width: 200px;
+    }
+}
+
+@media(width < 445px){
+
+    .topControls{
+        width: 100%;
+        justify-content: space-between;
+        margin: 2.5% 0%;
+    }
+
+    .topControls a {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    .topControls button[name="cancel"] {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
 }

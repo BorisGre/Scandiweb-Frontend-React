@@ -10,15 +10,19 @@ const Products = ({productsObj, setProducts, nextPage, setLoadNextPage, scrollTo
         console.log(`load nextPage`)//, nextPage)
         if(productsObj.next && nextPage === true){
             console.log(`next Page`, productsObj.current, productsObj.next, `next:`, productsObj.current+1)
-            const fetchMock = mockFabric()
-            console.log(fetchMock)
+            //const fetchMock = 
+            mockFabric()
+            //.then(console.log)//fetchMock)
          /*   fetch('https://dummyjson.com/products')
             .then(res => res.json())
             .then(console.log)
             .then(prod => setProducts({current: productsObj.current+1, next: true, products: [...productsObj.products, ...fetchMock.products]}))
             .catch(e => console.log(`error`, e))
             .finally(setLoadNextPage(false))*/
-            setProducts({current: productsObj.current+1, next: true, products: [...productsObj.products, ...fetchMock.products]})
+            .then(fetchMock => {
+                console.log(`fetchMock`, fetchMock);
+            
+            setProducts({current: productsObj.current+1, next: true, products: [...productsObj.products, ...fetchMock.products]})})
             //setLoadNextPage(false)
             //scrollToEnd()
         }

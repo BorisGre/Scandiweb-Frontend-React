@@ -8,7 +8,7 @@ import { currentFilled, notification, validate } from '../../helpers/fieldsHelpe
 import validateSchemas from '../../helpers/schemas/validateSchemas';
 
 //Product Add View
-const ProductAdd = () => {
+const ProductAdd = ({productsObj, setProducts}) => {
     
     const [newProduct, changeProduct] = useState({})
     const [currentType, typeHandler] = useState("") 
@@ -40,7 +40,12 @@ const ProductAdd = () => {
               .then(res => res.json())
               .then(console.log);
              console.log(`save data`)
+             const newProductKV = Object.keys(newProduct).reduce((prev, k) => { 
+                 prev[k] = newProduct[k].value
+                 return prev
+                }, {})
              productSave(true)
+             setProducts({...productsObj, products: [...productsObj.products, newProductKV]})
         }
         rejectSaveNotifyToggle({show: validate.valid, message: validate.message})
         console.log(`save data, REJECT`, rejectSaveNotify)
@@ -79,7 +84,7 @@ const ProductAdd = () => {
                         <button name="save" onClick={saveNewProduct}>Save</button>
                         <Link to="/"><button name="cancel">Cancel</button></Link>
                     </div>
-                  </div>
+            </div>
                   <hr></hr>
                   <ProductFormComponent {...formProps} />
             </section> 

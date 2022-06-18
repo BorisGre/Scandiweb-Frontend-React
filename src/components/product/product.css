@@ -1,11 +1,10 @@
 .product{
     display: block;
     border: 2px solid black;
-    flex-basis: 200px; /*2%;*/
-    /*width: 200px;*/
+    flex-basis: 250px; /*2%;*/
     margin: 1.5%;
-    padding: 0.5%;
-    height: 170px;
+    padding: 1%;
+    height: 200px;
 }
 
 .product label.productCheckbox {
@@ -30,4 +29,7 @@ input[type="checkbox"].delete-checkbox{
 .productCard li{
     width: 100%;
     text-align: center;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

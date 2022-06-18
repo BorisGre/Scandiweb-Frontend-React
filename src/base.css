@@ -1,0 +1,39 @@
+#root {
+    outline: none;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    height: 100%;
+}
+
+.rootApp {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2.5% 5%;
+    height: 100%;
+}
+
+.wrap {
+    min-height: 550px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    padding: 0px;
+    margin: 0px;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}

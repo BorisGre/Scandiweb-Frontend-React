@@ -28,9 +28,10 @@ function App({storageID}) {
        
     }, [storageID, reduxState])*/
     const [productsObj, setProducts] = useState({current: 0, next: true, products: []})
+
     const [nextPage, setLoadNextPage] = useState(true)
     const [debounce, setDebounce] = useState(false)
-    const debounceTime = 2000//ms
+    const debounceTime = 1000//ms
 
     const infinityLoad = function(e){// print "false" if direction is down and "true" if up
 
@@ -70,7 +71,8 @@ function App({storageID}) {
     );
 
     const productProps = {productsObj, setProducts, nextPage, setLoadNextPage, scrollToTop, scrollToEnd}
-
+    const productAddProps = {productsObj, setProducts}
+            console.log(`app`, productsObj)
     return (
             <main className="rootApp">
                 <BrowserRouter>
@@ -78,7 +80,7 @@ function App({storageID}) {
                     <Route path="/" element={<Products {...productProps}/>}>
                         <Route index element={<Products {...productProps}/>}/>
                     </Route>
-                    <Route path="/addproduct" element={<ProductAdd/>}></Route>
+                    <Route path="/addproduct" element={<ProductAdd {...productAddProps}/>}></Route>
                 </Routes>
                 </BrowserRouter>
                 <Footer/> 
