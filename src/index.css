@@ -2,7 +2,7 @@
 @import './components/typesSelector/typesSelector.css';
 @import './components/footer/footer.css';
 @import './components/product/product.css';
-@import './components/dvd/dvdComponent.css';
+@import './components/dvd/dvd.css';
 @import './components/book/book.css';
 @import './components/furniture/furniture.css';
 @import './views/ProductsPage/Products.css';

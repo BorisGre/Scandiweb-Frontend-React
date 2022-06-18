@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { typeToComponentFabric } from '../../helpers/mockFabric';
+import ErrorBoundary from '../errorBoundary';
 import TypesSelector from '../typesSelector/typesSelector';
 
 //Product Add form 
-const ProductFormComponent = ({types, currentType, notification, handleChange, changeType, newProduct, typeCompMap}) => {
+const ProductFormComponent = ({productTypes, currentType, notification, handleChange, changeType, newProduct}) => {
+
+    const Lazy = typeToComponentFabric(React, currentType)
+    const LazyProprs = {newProduct, handleChange, notification}
+
+
+    console.log("lazy", Lazy, "type", currentType, "props", LazyProprs);
 
     return (
             <form id="product_form">
@@ -38,10 +46,22 @@ const ProductFormComponent = ({types, currentType, notification, handleChange, c
                 <li>
                     <div className='typesSelectorWrapper'>
                         <label htmlFor="productType" name="switcherLabel">Type Switcher</label>
-                        <TypesSelector types={types} defaultValue={newProduct.productType?.value} onChangeHandler={changeType}/>
+                        <TypesSelector types={productTypes} defaultValue={newProduct.productType?.value} onChangeHandler={changeType}/>
                     </div>
                 </li>     
-                <li className="typeSpecificFields">{typeCompMap[currentType]}</li>
+                {/*<li className="typeSpecificFields">{typeCompMap[currentType]}</li>*/}
+                <li className="typeSpecificFields">{
+
+                    currentType.length
+                    ?
+                        <ErrorBoundary>
+                                <Suspense fallback={""}>
+                                    <Lazy {...LazyProprs}/>
+                                </Suspense>
+                        </ErrorBoundary>
+                    : ""
+                  }
+                </li>
                 </ul>
             </fieldset>
             </form>

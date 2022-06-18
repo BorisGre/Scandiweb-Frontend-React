@@ -3,31 +3,26 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
-import { useSelector } from 'react-redux';
-import { localStorageReadRaw, localStorageWrite } from './helpers/localStorageHelper';
 import Footer from './components/footer/footer';
 import Products from './views/ProductsPage/Products';
 import ProductAdd from './views/ProductAdd/ProductAdd';
 
-function App({storageID}) {
+function App({}) {
+ 
+    /*const curr = () => {
+
+        return useLocation().pathname;
+    }
+    console.log(`Route`, curr());*/
+
     const windowRef = useRef(window);
     let maxScroll = 0;
     const maxScrollRef = useRef(maxScroll);
-    /*const [PopUpShowed, setPopUpFlag] = useState(false)
-    const popUpProps = {showHideHandler: setPopUpFlag, PopUpShowed} 
-
-    const reduxState = useSelector(state => state)
-    
-     useEffect(() => {
-        const localStorageState = localStorageReadRaw(storageID)
-        const strRedux = JSON.stringify(reduxState)
-            if(strRedux !== localStorageState){
-                localStorageWrite(storageID, reduxState)          
-            }
-       
-    }, [storageID, reduxState])*/
+ 
     const [productsObj, setProducts] = useState({current: 0, next: true, products: []})
+    const [productTypes, setProductTypes] = useState([])
 
     const [nextPage, setLoadNextPage] = useState(true)
     const [debounce, setDebounce] = useState(false)
@@ -35,12 +30,13 @@ function App({storageID}) {
 
     const infinityLoad = function(e){// print "false" if direction is down and "true" if up
 
-        console.log(this.scrollY, this.outerHeight, this.innerHeight, this.outerHeight - this.innerHeight, maxScroll)
+        //console.log(this.scrollY, this.outerHeight, this.innerHeight, this.outerHeight - this.innerHeight, maxScroll)
 
         //if((this.oldScroll < this.scrollY) && ((this.scrollY - this.oldScroll) >= (this.outerHeight*0.15))){
         if(this.oldScroll < this.scrollY && this.scrollY >= maxScrollRef.current){
+
             if(debounce === false){
-                console.log(`scroll down, debounce`, debounce, nextPage)
+                //console.log(`scroll down, debounce`, debounce, nextPage)
                 setLoadNextPage(true)
                 setDebounce(true)
            }
@@ -54,7 +50,7 @@ function App({storageID}) {
 
     const scrollToEnd = () => { 
         const ref = window; 
-        console.log(`scroll TO`, maxScrollRef.current, (ref.outerHeight - ref.innerHeight))
+        //console.log(`scroll TO`, maxScrollRef.current, (ref.outerHeight - ref.innerHeight))
         ref.scroll(0, maxScroll-(ref.outerHeight - ref.innerHeight))
     }
 
@@ -63,7 +59,7 @@ function App({storageID}) {
     useEffect(() => {
 
         if(debounce){
-            console.log(`debounce setTimeout`, debounce) 
+           // console.log(`debounce setTimeout`, debounce) 
             setTimeout(() => { console.log(`timeout`); setDebounce(false)}, debounceTime)
           }
         }  
@@ -71,8 +67,8 @@ function App({storageID}) {
     );
 
     const productProps = {productsObj, setProducts, nextPage, setLoadNextPage, scrollToTop, scrollToEnd}
-    const productAddProps = {productsObj, setProducts}
-            console.log(`app`, productsObj)
+    const productAddProps = {productsObj, setProducts, productTypes, setProductTypes}
+           
     return (
             <main className="rootApp">
                 <BrowserRouter>

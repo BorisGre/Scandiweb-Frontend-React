@@ -1,40 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Product from '../../components/product/product';
-import mockFabric from '../../helpers/mockFabric';
+import { mockProducts } from '../../helpers/mockFabric';
 
 //Products page
-const Products = ({productsObj, setProducts, nextPage, setLoadNextPage, scrollToTop, scrollToEnd}) => {
+const Products = ({productsObj, setProducts, nextPage, setLoadNextPage}) => {
 
     useEffect(() => {
-        console.log(`load nextPage`)//, nextPage)
+
         if(productsObj.next && nextPage === true){
-            console.log(`next Page`, productsObj.current, productsObj.next, `next:`, productsObj.current+1)
-            //const fetchMock = 
-            mockFabric()
-            //.then(console.log)//fetchMock)
-         /*   fetch('https://dummyjson.com/products')
-            .then(res => res.json())
-            .then(console.log)
-            .then(prod => setProducts({current: productsObj.current+1, next: true, products: [...productsObj.products, ...fetchMock.products]}))
-            .catch(e => console.log(`error`, e))
-            .finally(setLoadNextPage(false))*/
-            .then(fetchMock => {
-                console.log(`fetchMock`, fetchMock);
             
-            setProducts({current: productsObj.current+1, next: true, products: [...productsObj.products, ...fetchMock.products]})})
-            //setLoadNextPage(false)
-            //scrollToEnd()
+            fetch('https://dummyjson.com/products')
+            .then(res => res.json())
+            //.then(console.log)
+            .then(resp => ({current: productsObj.current+1, next: resp.next, 
+                            products: [...productsObj.products, ...resp.products]
+                          }))
+            .catch(e => console.log(`Products Fetching Error`, e))
+
+            mockProducts()
+            .then(fetchMock => {
+                //console.log(`fetchMock`, fetchMock);
+            
+            setProducts({current: productsObj.current+1, next: true, 
+                         products: [...productsObj.products, ...fetchMock.products]})
+                        })
         }
-        //if(!productsObj.next && nextPage) setLoadNextPage(false)
         setLoadNextPage(false)
 
-    }, [nextPage]); //[nextPage, setLoadNextPage, productsObj, mockFabric]);
+    }, [nextPage]);
         
-    const [checkedProducts, checkToggle] = useState([])
 
+
+    const [checkedProducts, checkToggle] = useState([])
     const onCheckToggle = (e) => {
-        console.log(`checkToggle`, e.target.value);
+       
         const checkedSKU = e.target.value;
         checkedProducts.includes(checkedSKU) ? checkToggle(checkedProducts.filter(v => v !== checkedSKU))
                                              : checkToggle([...checkedProducts, checkedSKU])   
@@ -42,18 +42,21 @@ const Products = ({productsObj, setProducts, nextPage, setLoadNextPage, scrollTo
     }
 
     const onMassDelete = (e) => {
-        console.log(`mass delete`, e, checkedProducts)
+        //console.log(`mass delete`, e, checkedProducts)
 
         fetch('https://dummyjson.com/products/1', {
             method: 'DELETE',
         })
         .then(res => res.json())
-        .then(console.log)
-        .then(_ => {
-            const products = productsObj.products.filter(product => !checkedProducts.includes(product['sku']))
+        //.then(console.log)
+        .then(res => checkedProducts.filter(product => res.skuArray ? !res.skuArray.includes(product['sku']) : []))
+        .then(newChecked => {
+            const products = productsObj.products.filter(product => !newChecked.includes(product['sku']))
             setProducts({...productsObj, products})
+            checkToggle(newChecked)
         })
         .then(_ => checkToggle([]))
+        .catch(e => console.log(`DELETE ERROR`, e));
     }
 
         return (

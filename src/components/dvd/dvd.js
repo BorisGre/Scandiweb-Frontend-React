@@ -13,7 +13,7 @@ const DVDComponent = ({newProduct = {}, handleChange, notification}) => {
               <li className='notificationSide'><span className='warning'>{notification('size', newProduct)}</span></li>
             </ul>
           </li>
-           <li>{/*<TypeDescriptionComponent productType={newProduct.productType?.value}/>*/}</li> 
+           <li>{<TypeDescriptionComponent productType={newProduct.productType?.value}/>}</li> 
         </ul>
         );
     }
