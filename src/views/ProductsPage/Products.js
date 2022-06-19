@@ -1,10 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import Product from '../../components/product/product';
 import { mockProducts } from '../../helpers/mockFabric';
 
 //Products page
-const Products = ({productsObj, setProducts, nextPage, setLoadNextPage}) => {
+const Products = ({productsObj, setProducts}) => {
+
+    const windowRef = useRef(window);
+    let maxScroll = 0;
+    const maxScrollRef = useRef(maxScroll);
+ 
+    const [nextPage, setLoadNextPage] = useState(true)
+    const [debounce, setDebounce] = useState(false)
+    const debounceTime = 1000//ms
+
+    const infinityLoad = function(e){// print "false" if direction is down and "true" if up
+
+        //console.log(this.scrollY, this.outerHeight, this.innerHeight, this.outerHeight - this.innerHeight, maxScroll)
+
+        //if((this.oldScroll < this.scrollY) && ((this.scrollY - this.oldScroll) >= (this.outerHeight*0.15))){
+        if(this.oldScroll < this.scrollY && this.scrollY >= maxScrollRef.current){
+
+            if(debounce === false){
+                
+                setLoadNextPage(true)
+                setDebounce(true)
+           }
+           maxScrollRef.current = this.scrollY >= maxScrollRef.current ? this.scrollY : maxScrollRef.current
+        } 
+
+     this.oldScroll = this.scrollY;
+    }
+
+    windowRef.current.onscroll = infinityLoad
+
+    useEffect(() => {
+
+        if(debounce){
+           
+            setTimeout(() => { console.log(`timeout`); setDebounce(false)}, debounceTime)
+          }
+        }  
+        ,[debounceTime, setDebounce, debounce]
+    );
 
     useEffect(() => {
 
@@ -20,15 +58,14 @@ const Products = ({productsObj, setProducts, nextPage, setLoadNextPage}) => {
 
             mockProducts()
             .then(fetchMock => {
-                //console.log(`fetchMock`, fetchMock);
-            
+               
             setProducts({current: productsObj.current+1, next: true, 
                          products: [...productsObj.products, ...fetchMock.products]})
                         })
         }
         setLoadNextPage(false)
 
-    }, [nextPage]);
+    }, [nextPage, setProducts, productsObj]);
         
 
 
