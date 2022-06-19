@@ -216,8 +216,6 @@ button[name="cancel"]{
 
     #product_form .typesSelector{
         min-width: 150px;
-        /*width: 100%;*/
-         /*margin: 0% 50%;*/
     }
 
     #product_form li.typeSpecificFields{
