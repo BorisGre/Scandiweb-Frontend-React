@@ -1,13 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/build
 /node_modules
-/src/actions
-/src/types
-/src/reducers
-/src/redux-states
-/src/helpers
-
 
 /.pnp
 .pnp.js
