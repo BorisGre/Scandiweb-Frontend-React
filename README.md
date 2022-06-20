@@ -1,4 +1,3 @@
-# React Redux Hooks Example
-Based on uphead git repo was created this app
+# React Frontend part for Test Task
 
 
