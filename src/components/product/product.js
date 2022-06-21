@@ -5,7 +5,7 @@ const Product = ({product = {}, checked, onCheckToggle}) => {
     return (
              <li className="product">
                  <label className="productCheckbox"> 
-                    <input type="checkbox" className="delete-checkbox"
+                    <input type="checkbox" className={checked ? 'delete-checkbox': 'checkbox'}
                             defaultChecked={checked}
                             value={product.sku}
                             onChange={onCheckToggle} 
