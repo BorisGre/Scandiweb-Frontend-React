@@ -37,21 +37,23 @@ const ProductAdd = ({productsObj, setProducts, productTypes, setProductTypes}) =
 
         const validate = validateSchemas(newProduct)
         if(validate.valid){
+
+            const newProductKeyValue = Object.keys(newProduct).reduce((prev, k) => { 
+                prev[k] = newProduct[k].value
+                return prev
+               }, {})
+
             fetch('https://dummyjson.com/products/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  title: 'BMW Pencil',
+                body: JSON.stringify(
+                  newProductKeyValue
                   /* other product data */
-                })
+                )
               })
               .then(res => res.json())
-              .then(console.log);
-
-             const newProductKeyValue = Object.keys(newProduct).reduce((prev, k) => { 
-                 prev[k] = newProduct[k].value
-                 return prev
-                }, {})
+              ///.then(console.log);
+            
              productSave(true)
              setProducts({...productsObj, products: [newProductKeyValue, ...productsObj.products]})
 

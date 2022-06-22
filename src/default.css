@@ -37,3 +37,11 @@ h3 {
     margin: 0;
     padding: 0;
 }
+
+nav {
+    background-color: unset;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: auto;
+    line-height: 56px;
+}

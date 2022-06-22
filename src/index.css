@@ -21,7 +21,7 @@
 .topControls {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: baseline;
 }
 
 .topControls button{
@@ -43,4 +43,11 @@
 
 .warning {
     color: red;
+}
+
+@media (width < 520px){
+
+    .topControls {
+     width: 100%;
+    }
 }
