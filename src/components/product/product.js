@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Product = ({product = {}, checked, onCheckToggle}) => {
+
     
     return (
              <li className="product">

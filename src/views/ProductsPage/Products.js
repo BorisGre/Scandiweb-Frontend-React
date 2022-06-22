@@ -109,7 +109,7 @@ const Products = ({productsObj, setProducts}) => {
                     <hr></hr>
                         <ul className="productsList">
                             {productsObj.products.map((product, idx) => {
-                                let check = Boolean(checkedProducts[product.sku])    
+                                let check = checkedProducts.includes(product.sku)    
                                 return <Product key={product.sku+idx*idx} product={product} checked={check} onCheckToggle={onCheckToggle}/>
                                 }   
                             )}
