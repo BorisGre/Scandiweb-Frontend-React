@@ -54,7 +54,7 @@ const ProductAdd = ({productsObj, setProducts, productTypes, setProductTypes}) =
                 }, {})
              productSave(true)
              setProducts({...productsObj, products: [newProductKeyValue, ...productsObj.products]})
-             
+
         } else {
 
             rejectSaveNotifyToggle({show: validate.valid, message: validate.message})
@@ -67,13 +67,13 @@ const ProductAdd = ({productsObj, setProducts, productTypes, setProductTypes}) =
     return (
         <div className="wrap"> 
             <section className="productAdd">
-            <div className='top'>  
+            <header className='top'>  
                    <h3>Product Add</h3>
-                   <div className='topControls'>
+                   <nav className='topControls'>
                         <button name="save" onClick={saveNewProduct}>Save</button>
                         <Link to="/"><button name="cancel">Cancel</button></Link>
-                    </div>
-            </div>
+                    </nav>
+            </header>
                   <hr></hr>
                   <ProductFormComponent {...formProps} />
             </section> 

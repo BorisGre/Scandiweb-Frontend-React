@@ -105,13 +105,13 @@ const Products = ({productsObj, setProducts}) => {
         return (
             <div className="wrap"> 
                 <section className="products">
-                 <div className='top'>  
+                 <header className='top'>  
                    <h3>Product List</h3>
-                   <div className='topControls'>
+                   <nav className='topControls'>
                         <Link to="/addproduct"><button name="add">ADD</button></Link>
                         <button id="delete-product-btn" name="delete" onClick={onMassDelete}>MASS DELETE</button>
-                    </div>
-                  </div>
+                    </nav>
+                  </header>
                     <hr></hr>
                         <ul className="productsList">
                             {productsObj.products.map((product, idx) => {
