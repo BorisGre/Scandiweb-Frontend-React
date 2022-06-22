@@ -33,7 +33,7 @@ const Products = ({productsObj, setProducts}) => {
     }
 
     windowRef.current.onscroll = infinityLoad
-
+   
     useEffect(() => {
 
         if(debounce){
@@ -43,6 +43,12 @@ const Products = ({productsObj, setProducts}) => {
         }  
         ,[debounceTime, setDebounce, debounce]
     );
+
+    /* let currentTimeOut = null
+    useEffect(() => {
+        clearTimeout(currentTimeOut)
+
+      }, []);*/
 
     useEffect(() => {
 

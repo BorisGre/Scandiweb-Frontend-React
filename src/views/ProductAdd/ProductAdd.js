@@ -54,9 +54,12 @@ const ProductAdd = ({productsObj, setProducts, productTypes, setProductTypes}) =
                 }, {})
              productSave(true)
              setProducts({...productsObj, products: [newProductKeyValue, ...productsObj.products]})
+             
+        } else {
+
+            rejectSaveNotifyToggle({show: validate.valid, message: validate.message})
+            console.log(`REJECT Saving new product`, rejectSaveNotify)
         }
-        rejectSaveNotifyToggle({show: validate.valid, message: validate.message})
-        console.log(`REJECT Saving new product`, rejectSaveNotify)
     }   
     
     const formProps = {productTypes, newProduct, changeProduct}                         
