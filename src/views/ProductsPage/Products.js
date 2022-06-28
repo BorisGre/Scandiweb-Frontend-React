@@ -54,20 +54,22 @@ const Products = ({productsObj, setProducts}) => {
 
         if(productsObj.next && nextPage === true){
             
-            fetch('https://dummyjson.com/products')
+            /*fetch('https://dummyjson.com/products')
             .then(res => res.json())
             //.then(console.log)
             .then(resp => ({current: productsObj.current+1, next: resp.next, 
                             products: [...productsObj.products, ...resp.products]
                           }))
-            .catch(e => console.log(`Products Fetching Error`, e))
+            .catch(e => console.log(`Products Fetching Error`, e))*/
 
-            mockProducts()
+            fetch('https://scandiwebtesttask2022.000webhostapp.com/')//mockProducts()
             .then(fetchMock => {
                
-            setProducts({current: productsObj.current+1, next: true, 
-                         products: [...productsObj.products, ...fetchMock.products]})
-                        })
+                                setProducts({current: productsObj.current+1, next: true, 
+                                            products: [...productsObj.products, ...fetchMock.products]})
+                                })
+
+            .catch(e => console.log(`Products Fetching Error`, e))            
         }
         setLoadNextPage(false)
 

@@ -53,9 +53,9 @@ const ProductAdd = ({productsObj, setProducts, productTypes, setProductTypes}) =
               })
               .then(res => res.json())
               ///.then(console.log);
-            
-             productSave(true)
+        
              setProducts({...productsObj, products: [newProductKeyValue, ...productsObj.products]})
+             productSave(true)
 
         } else {
 
